@@ -1,5 +1,5 @@
 {
-  "name": "Extension Starter Kit",
+  "name": "Waterfox",
   "background": {
     "scripts": ["background.bundle.js"]
   },
@@ -12,7 +12,7 @@
   },
   "browser_action": {
     "default_icon": "icon-16.png",
-    "default_title": "Extension Starter Kit",
+    "default_title": "Waterfox",
     "default_popup": "popup.html"
   },
   "chrome_url_overrides": {
