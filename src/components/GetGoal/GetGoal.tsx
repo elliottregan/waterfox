@@ -53,9 +53,8 @@ const useAmountAsync = (componentIsMounted: React.MutableRefObject<Boolean>) => 
 function ShowGoal() {
   const componentIsMounted = useIsMounted();
   const goal = useAmountAsync(componentIsMounted);
-  const formatValue = (goal: number) => goal.toFixed(0);
   return (
-    <span><AnimateNumber value={goal} formatValue={formatValue} duration={300} /></span>
+    <span><AnimateNumber value={goal} duration={300} /></span>
   )
 }
 

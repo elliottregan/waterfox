@@ -22,9 +22,8 @@ const useIsMounted = () => {
 function ShowAmount() {
   const componentIsMounted = useIsMounted();
   const amount = useAmountAsync(componentIsMounted);
-  const formatValue = (goal: number) => goal.toFixed(0);
   return (
-    <span><AnimateNumber value={amount} formatValue={formatValue} duration={300} /></span>
+    <span><AnimateNumber value={amount} duration={300} /></span>
   )
 }
 
