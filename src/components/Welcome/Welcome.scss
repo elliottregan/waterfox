@@ -15,8 +15,13 @@
   --color-primary-darkest: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 10%)); 
   
   
-  font-size: 100%;
-  font-family: 'Abril Fatface', cursive;
+  --font-serif: 'Abril Fatface', cursive;
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans-serif);
 }
 
 #root {
@@ -30,13 +35,25 @@
   max-width: 45rem;
 }
 
-.values {
-  font-size: 5em;
-  text-align: center;
+.percent {
+  font-size: 8em;
+  line-height: 1;
+  text-align: left;
+  margin-left: -0.05em;
+  font-family: var(--font-serif);
 }
 
 .settings-button {
   position: fixed;
   right: 1rem;
   top: 1rem;
+}
+
+.total-units {
+  color: #666;
+  font-size: 1.5em;
+}
+
+.button-row {
+  margin-top: 4rem;
 }

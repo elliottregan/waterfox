@@ -1,5 +1,6 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState } from "react";
+import { PlusCircle } from 'react-feather';
 
 import './UpdateTotal.scss'
 
@@ -29,7 +30,7 @@ function UpdateAmount() {
         className="btn btn--primary"
         onClick={() => increaseAmount(1)}
       >
-        + Drink a glass
+        <PlusCircle /> <span>Drink a glass</span>
       </button>
 
       <button
@@ -37,7 +38,7 @@ function UpdateAmount() {
         className="btn btn-link"
         onClick={() => decreaseAmount(1)}
       >
-        - Remove
+        <span>Undo</span>
       </button>
     </div>
   );

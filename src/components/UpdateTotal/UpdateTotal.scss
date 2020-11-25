@@ -12,9 +12,19 @@
   border: 1px solid var(--button-color-darker);
   border-radius: 0.5em;
   transition: all 300ms ease;
-  margin: 0.5em;
   font-weight: 800;
   font-size: 1em;
+  text-shadow: 0 1.5px transparentize(#000, .85);
+  
+  height: 3em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  vertical-align: middle;
+  
+  & + & {
+    margin-left: 1rem;
+  }
 
   &:hover, &:focus {
     background-color: var(--button-color-darker);

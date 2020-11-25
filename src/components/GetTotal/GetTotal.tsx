@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import { useAmountAsync } from './useAmountAsync';
+import { useAmount, useGoal } from '../../dataSvc';
 import AnimateNumber from '../AnimateNumber/AnimateNumber';
 
-function Popup() {
-  return (
-    <ShowAmount />
-  );
+const unit = 'oz';
+
+interface defaultProps {
+  unit?: string;
 }
 
 const useIsMounted = () => {
@@ -19,17 +19,21 @@ const useIsMounted = () => {
   return isMounted;
 };
 
-function ShowAmount() {
+export default function ShowAmount(props:defaultProps) {
   const componentIsMounted = useIsMounted();
-  const amount = useAmountAsync(componentIsMounted);
+  const total = useAmount(componentIsMounted);
+  const goal = useGoal();
+  let value = total;
+
+  if (props.unit === 'percent') {
+    value = total/goal * 100;
+  }
+
   const style = {
-    width: `${amount.toString().length}ch`,
     display: 'inline-block',
-    'text-align': 'right',
+    textAlign: 'left' as 'left',
   }
   return (
-    <span style={style}><AnimateNumber value={amount} duration={300} /></span>
+    <span style={style}><AnimateNumber value={value} />{ props.unit === 'percent' ? '%' : unit}</span>
   )
 }
-
-export default Popup;

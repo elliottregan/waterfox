@@ -1,7 +1,7 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState, useEffect } from "react";
 
-export function useAmountAsync(componentIsMounted: React.MutableRefObject<Boolean>) {
+export default function useAmountAsync(componentIsMounted: React.MutableRefObject<Boolean>) {
   const [amount, setAmount] = useState(0);
 
   useEffect(

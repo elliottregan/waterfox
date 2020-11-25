@@ -1,5 +1,6 @@
 import { browser } from 'webextension-polyfill-ts';
 import React from "react";
+import { Settings } from 'react-feather';
 
 import './SettingsLink.scss';
 
@@ -13,7 +14,7 @@ function SettingsButton() {
         browser.runtime.openOptionsPage();
       }}
     >
-      Settings
+      <Settings /> <span>Settings</span>
     </button>
   );
 }

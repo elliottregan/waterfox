@@ -20,7 +20,7 @@ class AnimatedNumber extends Component<AnimatedNumberProps> {
   static defaultProps = {
     duration: 1000,
     formatValue: (value: number) => value.toFixed(0),
-    easing: 'easeInOutSine',
+    easing: 'easeOutSine',
     run: defaultFunction,
     complete: defaultFunction,
     update: defaultFunction,
