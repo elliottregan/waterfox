@@ -19,17 +19,19 @@ function UpdateAmount() {
   const goal = useGoalAsync();
   
   return (
-    <div>
-    <label htmlFor="setGoal">Set Goal:</label>
-    <input
-        type="number"
-        name="setGoal"
-        min="0"
-        step="8"
-        id="setGoal"
-        value={goal}
-        onChange={(e) => handleInputChange(e)}
-    /><GetUnits />
+    <div className="field">
+      <label htmlFor="setGoal">Set Goal:</label>
+      <input
+          className="input"
+          type="number"
+          name="setGoal"
+          min="0"
+          step="8"
+          id="setGoal"
+          value={goal}
+          onChange={(e) => handleInputChange(e)}
+      />
+      <span className="field__units"><GetUnits /></span>
     </div>
   );
 }

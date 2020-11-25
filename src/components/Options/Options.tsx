@@ -8,8 +8,8 @@ function Options() {
   return (
     <div className="Options container-fluid my-5">
       <h1>Settings</h1>
-      <SetGoal />
       <SetUnits />
+      <SetGoal />
     </div>
   );
 }

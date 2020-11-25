@@ -18,12 +18,12 @@ function UpdateAmount() {
   const units = useUnits();
   
   return (
-    <div>
-    <label htmlFor="setUnits">Set Units:</label>
-    <select value={units} name="setUnits" id="setUnits" onChange={(e) => handleInputChange(e)}>
-      <option value="imperial" >Imperial (oz)</option>
-      <option value="metric">Metric (l)</option>
-    </select>
+    <div className="field">
+      <label htmlFor="setUnits">Set Units:</label>
+      <select className="input" value={units} name="setUnits" id="setUnits" onChange={(e) => handleInputChange(e)}>
+        <option value="imperial" >Imperial (oz)</option>
+        <option value="metric">Metric (l)</option>
+      </select>
     </div>
   );
 }
