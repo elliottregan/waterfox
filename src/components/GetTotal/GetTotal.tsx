@@ -3,8 +3,6 @@ import { useAmount, useGoal } from '../../dataSvc';
 import AnimateNumber from '../AnimateNumber/AnimateNumber';
 import GetUnits from '../GetUnits/GetUnits';
 
-const unit = 'oz';
-
 interface defaultProps {
   unit?: string;
 }
