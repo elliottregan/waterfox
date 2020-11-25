@@ -1,6 +1,6 @@
-import { browser } from 'webextension-polyfill-ts';
 import React from "react";
 import GetTotal from '../GetTotal/GetTotal';
+import SettingsLink from '../navigation/SettingsLink/SettingsLink';
 
 import './Popup.scss';
 
@@ -10,24 +10,9 @@ function Popup() {
       Popup!
       <div className="mb-3">
         <GetTotal />
-        <SettingsButton />
+        <SettingsLink />
       </div>
     </div>
-  );
-}
-
-function SettingsButton() {
-  return (
-    <button
-      type="button"
-      className="btn btn-link btn-sm"
-      onClick={e => {
-        e.preventDefault();
-        browser.runtime.openOptionsPage();
-      }}
-    >
-      Settings
-    </button>
   );
 }
 
