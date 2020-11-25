@@ -9,12 +9,14 @@ import './Welcome.scss';
 
 function Welcome() {
   return (
-    <div className="Welcome container-fluid my-5">
-      <div className="text-center">
-        <GetTotal /> of <Goal />oz
-        <UpdateTotal />
+    <main>
+      <div className="Welcome container-fluid my-5">
+        <div className="text-center">
+          <GetTotal /> of <Goal />oz
+          <UpdateTotal />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

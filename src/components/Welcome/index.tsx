@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { browser } from 'webextension-polyfill-ts';
 import Welcome from './Welcome';
+import Background from '../Background/Background';
 
 ReactDOM.render(<Welcome />, document.getElementById('root'));
+ReactDOM.render(<Background />, document.getElementById('background'));
 
 const baseState = {
   dateCreated: new Date(),
