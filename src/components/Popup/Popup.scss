@@ -1,3 +1,20 @@
+@use '../../styles/index';
+
 .Popup {
   min-width: 300px;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+.percent {
+  font-size: 4em;
+  font-family: var(--font-serif);
+  display: flex;
+  justify-content: center;
 }
