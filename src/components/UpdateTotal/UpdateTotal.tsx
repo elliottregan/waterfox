@@ -1,6 +1,8 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState } from "react";
 
+import './UpdateTotal.scss'
+
 const oz = 8;
 
 function UpdateAmount() {
@@ -24,7 +26,7 @@ function UpdateAmount() {
     <div>
       <button
         type="button"
-        className="btn btn-link"
+        className="btn btn--primary"
         onClick={() => increaseAmount(1)}
       >
         + Drink a glass
@@ -35,7 +37,7 @@ function UpdateAmount() {
         className="btn btn-link"
         onClick={() => decreaseAmount(1)}
       >
-        - Remove a glass
+        - Remove
       </button>
     </div>
   );

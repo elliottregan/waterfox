@@ -1,0 +1,29 @@
+.btn {
+  --button-color-hue: var(--color-primary-hue);
+  --button-color-sat: var(--color-primary-sat);
+  --button-color-lit: 98%;
+  
+  --button-color: hsl(var(--button-color-hue), var(--button-color-sat), var(--button-color-lit));
+  --button-color-darker: hsl(var(--button-color-hue), var(--button-color-sat), calc(var(--button-color-lit) - 5%));
+  --button-color-darkest: hsl(var(--button-color-hue), var(--button-color-sat), calc(var(--button-color-lit) - 10%)); 
+
+  padding: 1em 2em;
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color-darker);
+  border-radius: 0.5em;
+  transition: all 300ms ease;
+  margin: 0.5em;
+  font-weight: 800;
+  font-size: 1em;
+
+  &:hover, &:focus {
+    background-color: var(--button-color-darker);
+    border-color: var(--button-color-darkest);
+  }
+
+  &--primary {
+    --button-color-hue: calc(var(--color-primary-hue) + 10);
+    --button-color-lit: var(--color-primary-lit);
+    color: #fff;
+  }
+}

@@ -22,8 +22,13 @@ const useIsMounted = () => {
 function ShowAmount() {
   const componentIsMounted = useIsMounted();
   const amount = useAmountAsync(componentIsMounted);
+  const style = {
+    width: `${amount.toString().length}ch`,
+    display: 'inline-block',
+    'text-align': 'right',
+  }
   return (
-    <span><AnimateNumber value={amount} duration={300} /></span>
+    <span style={style}><AnimateNumber value={amount} duration={300} /></span>
   )
 }
 

@@ -11,11 +11,11 @@ function Welcome() {
   return (
     <main>
       <div className="Welcome container-fluid my-5">
-        <div className="text-center">
+        <div className="values">
           <GetTotal /> of <Goal />oz
-          <UpdateTotal />
-          <SettingsLink />
         </div>
+        <UpdateTotal />
+        <SettingsLink />
       </div>
     </main>
   );
