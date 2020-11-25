@@ -1,40 +1,9 @@
 import { browser } from 'webextension-polyfill-ts';
-import React, { useState, useEffect } from "react";
-
-
-const useGoalAsync = () => {
-    const [goal, setGoal] = useState('');
-  
-    useEffect(
-      () => {
-        const logStorageChange = (changes: any, area: string) => {
-          if (area === 'local' && changes.goal) {
-            setGoal(changes.goal.newValue)
-          }
-        }
-        
-        async function getGoal() {
-          const { goal } = await browser.storage.local.get('goal');
-          setGoal(goal)
-        }
-    
-        browser.storage.onChanged.addListener((changes, area) => logStorageChange(changes, area));
-        getGoal();
-  
-        return () => {
-          browser.storage.onChanged.removeListener(logStorageChange);
-        };
-      },
-    );
-  
-    return goal;
-
-}
-  
+import React, { useState } from "react";
+import { useGoalAsync } from './useGoalAsync';
 
 function UpdateAmount() {
   const [, setGoalValue] = useState('64');
-
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
