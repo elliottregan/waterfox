@@ -7,6 +7,24 @@ const defaults = {
   duration: 4000
 }
 
+const useHorizontalAnimation = (target: React.RefObject<SVGSVGElement> | React.RefObject<SVGPathElement>, options: { duration: any; } = defaults) => {
+  const animationRef = useRef(anime({}));
+  useEffect(() => {
+    animationRef.current = anime({
+      targets: target.current,
+      translateX: '25%',
+      duration: 8000,
+      loop: true,
+      direction: "alternate",
+      easing: "easeInOutSine"
+    });
+    animationRef.current.play()
+
+  }, [target, options]);
+
+  return animationRef;
+}
+
 const useBackgroundAnimation = (target: React.RefObject<SVGSVGElement> | React.RefObject<SVGPathElement>, options: { duration: any; } = defaults) => {
   const animationRef = useRef(anime({}));
   useEffect(() => {
@@ -32,6 +50,7 @@ function Background() {
   const path1 = useRef<SVGPathElement>(null);
   const path2 = useRef<SVGPathElement>(null);
 
+  useHorizontalAnimation(shape1);
   useBackgroundAnimation(path1);
   useBackgroundAnimation(path2, { duration: 5000 });
 
