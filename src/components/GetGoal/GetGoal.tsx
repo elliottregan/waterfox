@@ -1,5 +1,6 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState, useEffect, useRef } from "react";
+import AnimateNumber from '../AnimateNumber/AnimateNumber';
 
 function Goal() {
   return (
@@ -52,8 +53,9 @@ const useAmountAsync = (componentIsMounted: React.MutableRefObject<Boolean>) => 
 function ShowGoal() {
   const componentIsMounted = useIsMounted();
   const goal = useAmountAsync(componentIsMounted);
+  const formatValue = (goal: number) => goal.toFixed(0);
   return (
-    <span>{`${goal}`}</span>
+    <span><AnimateNumber value={goal} formatValue={formatValue} duration={300} /></span>
   )
 }
 
