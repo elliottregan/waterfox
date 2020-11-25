@@ -1,28 +1,4 @@
-@font-face {
-  font-family: 'Abril Fatface';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../../fonts/abril-fatface-v12-latin-regular.woff2') format('woff2');
-}
-
-:root {
-  --color-primary-hue: 204;
-  --color-primary-sat: 100%;
-  --color-primary-lit: 50%;
-  
-  --color-primary: hsl(var(--color-primary-hue), var(--color-primary-sat), var(--color-primary-lit));
-  --color-primary-darker: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 5%));
-  --color-primary-darkest: hsl(var(--color-primary-hue), var(--color-primary-sat), calc(var(--color-primary-lit) - 10%)); 
-  
-  
-  --font-serif: 'Abril Fatface', cursive;
-  --font-sans-serif: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-sans-serif);
-}
+@use '../../styles/index';
 
 #root {
   display: flex;

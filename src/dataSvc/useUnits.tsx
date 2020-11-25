@@ -2,7 +2,7 @@ import { browser } from 'webextension-polyfill-ts';
 import { useState, useEffect } from "react";
 
 export default function useUnitsAsync() {
-  const [units, setUnits] = useState(0);
+  const [units, setUnits] = useState('');
 
   useEffect(
     () => {
@@ -12,13 +12,13 @@ export default function useUnitsAsync() {
         }
       };
 
-      async function getAmount() {
-        const value = await browser.storage.local.get('units');
-        setUnits(Number(value.units));
+      async function getUnit() {
+        const { units } = await browser.storage.local.get('units');
+        setUnits(units);
       }
 
       browser.storage.onChanged.addListener((changes, area) => logStorageChange(changes, area));
-      getAmount();
+      getUnit();
 
       return () => {
         browser.storage.onChanged.removeListener(logStorageChange);

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useAmount, useGoal } from '../../dataSvc';
 import AnimateNumber from '../AnimateNumber/AnimateNumber';
+import GetUnits from '../GetUnits/GetUnits';
 
 const unit = 'oz';
 
@@ -34,6 +35,6 @@ export default function ShowAmount(props:defaultProps) {
     textAlign: 'left' as 'left',
   }
   return (
-    <span style={style}><AnimateNumber value={value} />{ props.unit === 'percent' ? '%' : unit}</span>
+    <span style={style}><AnimateNumber value={value} />{ props.unit === 'percent' ? '%' : <GetUnits />}</span>
   )
 }

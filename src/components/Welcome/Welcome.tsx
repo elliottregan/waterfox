@@ -4,7 +4,6 @@ import Total from '../GetTotal/GetTotal';
 import Goal from '../GetGoal/GetGoal';
 import UpdateTotal from '../UpdateTotal/UpdateTotal';
 import SettingsLink from '../navigation/SettingsLink/SettingsLink';
-
 import './Welcome.scss';
 
 function Welcome() {
@@ -14,7 +13,7 @@ function Welcome() {
         <div className="percent">
           <Total unit="percent" />
         </div>
-        <div className="total-units"><Total /> of <Goal />oz</div>
+        <div className="total-units"><Total /> of <Goal /></div>
         <div className="button-row">
           <UpdateTotal />
         </div>

@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import { useUnits } from '../../../../dataSvc';
 
 function UpdateAmount() {
-  const [, setUnitsValue] = useState('64');
+  const [, setUnitsValue] = useState('');
 
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(e: React.ChangeEvent<HTMLSelectElement>) {
     e.preventDefault();
     setUnits(e.target.value);
   }
 
   async function setUnits(units: React.SetStateAction<string>) {
-    await browser.storage.local.set({units: units});
+    await browser.storage.local.set({ units });
     setUnitsValue(units)
   }
 
@@ -20,15 +20,10 @@ function UpdateAmount() {
   return (
     <div>
     <label htmlFor="setUnits">Set Units:</label>
-    <input
-        type="number"
-        name="setUnits"
-        min="0"
-        step="8"
-        id="setUnits"
-        value={units}
-        onChange={(e) => handleInputChange(e)}
-    />oz
+    <select value={units} name="setUnits" id="setUnits" onChange={(e) => handleInputChange(e)}>
+      <option value="imperial" >Imperial (oz)</option>
+      <option value="metric">Metric (l)</option>
+    </select>
     </div>
   );
 }

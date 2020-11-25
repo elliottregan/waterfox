@@ -7,19 +7,32 @@ import Background from '../Background/Background';
 ReactDOM.render(<Welcome />, document.getElementById('root'));
 ReactDOM.render(<Background />, document.getElementById('background'));
 
-const baseState = {
+interface baseStateType {
+  dateCreated: Date,
+  amount: number,
+  goal: number,
+  units: 'metric' | 'imperial'
+}
+
+const baseState:baseStateType = {
   dateCreated: new Date(),
   amount: 0,
   goal: 64,
+  units: 'metric'
 };
 
 getInitialState()
 
 async function getInitialState() {
-  const { dateCreated } = await browser.storage.local.get('dateCreated');
-  if (!dateCreated || isYesterday(new Date(dateCreated))) {
+  const storageState = await browser.storage.local.get();
+  if (!expectedSchema(storageState) || !storageState.dateCreated || isYesterday(new Date(storageState.dateCreated))) {
     browser.storage.local.set(baseState);
   }
+}
+
+// Really basic schema check. 
+function expectedSchema(state:any, schema:baseStateType = baseState) {
+  return Object.keys(state).length === Object.keys(schema).length
 }
 
 function isYesterday(date: Date): Boolean {

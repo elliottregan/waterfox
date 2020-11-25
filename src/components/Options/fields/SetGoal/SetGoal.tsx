@@ -1,9 +1,10 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState } from "react";
 import { useGoalAsync } from './useGoalAsync';
+import GetUnits from '../../../GetUnits/GetUnits';
 
 function UpdateAmount() {
-  const [, setGoalValue] = useState('64');
+  const [, setGoalValue] = useState('0');
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
@@ -28,7 +29,7 @@ function UpdateAmount() {
         id="setGoal"
         value={goal}
         onChange={(e) => handleInputChange(e)}
-    />oz
+    /><GetUnits />
     </div>
   );
 }

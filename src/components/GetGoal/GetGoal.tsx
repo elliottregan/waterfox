@@ -1,5 +1,6 @@
 import React from "react";
 import { useGoal } from '../../dataSvc';
+import GetUnits from '../GetUnits/GetUnits';
 
 function Goal() {
   return (
@@ -10,7 +11,7 @@ function Goal() {
 function ShowGoal() {
   const goal = useGoal();
   return (
-    <span>{goal}</span>
+    <span>{goal}<GetUnits /></span>
   )
 }
 
