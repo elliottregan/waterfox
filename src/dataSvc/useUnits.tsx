@@ -17,13 +17,13 @@ export default function useUnitsAsync() {
   
   useEffect(
     () => {
+      browser.storage.onChanged.addListener(logStorageChange);
       return () => {
         browser.storage.onChanged.removeListener(logStorageChange);
       };
     }
   );
 
-  browser.storage.onChanged.addListener(logStorageChange);
   getUnit();
 
   return units;

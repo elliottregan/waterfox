@@ -11,20 +11,20 @@ export default function useGoalAsync() {
 
   const logStorageChange = (changes: any, area: string) => {
     if (area === 'local' && changes.goal) {
-      setGoal(changes.options.goal.newValue);
+      setGoal(Number(changes.options.goal.newValue));
     }
   };
-
+  
   useEffect(
     () => {
-      browser.storage.onChanged.addListener((changes, area) => logStorageChange(changes, area));
-      getAmount();
-
+      browser.storage.onChanged.addListener(logStorageChange);
       return () => {
         browser.storage.onChanged.removeListener(logStorageChange);
       };
     }
   );
+
+  getAmount();
 
   return goal;
 

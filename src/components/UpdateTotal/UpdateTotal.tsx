@@ -4,23 +4,18 @@ import { PlusCircle } from 'react-feather';
 
 import './UpdateTotal.scss'
 
-const oz = 8;
-
 function UpdateAmount() {
-  const [, setAmount] = useState(0);
+  const [amount] = useState(0);
     
-  async function increaseAmount(increase:number) {
-    const { amount } = await browser.storage.local.get('amount');
-      const newAmount = amount + increase * oz
-      setAmount(newAmount)
-      await browser.storage.local.set({amount: newAmount});
+  async function increaseAmount(increase:number = 1) {
+    const newAmount = amount + increase
+    await browser.storage.local.set({amount: newAmount});
   }
   
-  async function decreaseAmount(increase:number) {
+  async function decreaseAmount(increase:number = 1) {
     const { amount } = await browser.storage.local.get('amount');
-      const newAmount = amount - increase * oz
-      setAmount(newAmount)
-      await browser.storage.local.set({amount: newAmount});
+    const newAmount = amount - increase
+    await browser.storage.local.set({amount: newAmount});
   }
   
   return (
@@ -28,7 +23,7 @@ function UpdateAmount() {
       <button
         type="button"
         className="btn btn--primary"
-        onClick={() => increaseAmount(1)}
+        onClick={() => increaseAmount()}
       >
         <PlusCircle /> <span>Drink a glass</span>
       </button>
@@ -36,7 +31,7 @@ function UpdateAmount() {
       <button
         type="button"
         className="btn btn-link"
-        onClick={() => decreaseAmount(1)}
+        onClick={() => decreaseAmount()}
       >
         <span>Undo</span>
       </button>

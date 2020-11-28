@@ -30,12 +30,15 @@ getInitialState()
 async function getInitialState() {
   const storageState = await browser.storage.local.get();
   if (!expectedSchema(storageState) || !storageState.dateCreated || isYesterday(new Date(storageState.dateCreated))) {
-    browser.storage.local.set(baseState);
+    console.log('reset', !expectedSchema(storageState))
+    await browser.storage.local.set({...baseState});
+    console.log(await browser.storage.local.get())
   }
 }
 
 // Really basic schema check. 
 function expectedSchema(state:any, schema:baseStateType = baseState) {
+  console.log(state, schema, Object.keys(state).length, Object.keys(schema).length)
   return Object.keys(state).length === Object.keys(schema).length
 }
 

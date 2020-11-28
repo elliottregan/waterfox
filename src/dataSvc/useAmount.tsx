@@ -1,27 +1,28 @@
 import { browser } from 'webextension-polyfill-ts';
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-export default function useAmountAsync(componentIsMounted: React.MutableRefObject<Boolean>) {
+export default function useAmountAsync() {
   const [amount, setAmount] = useState(0);
+
+  const logStorageChange = (changes: any, area: string) => {
+    console.log('change?', changes.amount)
+    if (area === 'local' && changes.amount.newValue !== changes.amount.oldValue) {
+      console.log('change', changes.amount)
+      setAmount(changes.amount.newValue);
+    }
+  };
+
+  async function getAmount() {
+    const { amount } = await browser.storage.local.get('amount');
+    console.log('get amount', amount)
+    setAmount(amount);
+  }
+
+  getAmount();
 
   useEffect(
     () => {
-      const logStorageChange = (changes: any, area: string) => {
-        if (area === 'local' && changes.amount) {
-          setAmount(changes.amount.newValue);
-        }
-      };
-
-      async function getAmount() {
-        const value = await browser.storage.local.get('amount');
-        if (componentIsMounted.current) {
-          setAmount(value.amount);
-        }
-      }
-
-      browser.storage.onChanged.addListener((changes, area) => logStorageChange(changes, area));
-      getAmount();
-
+      browser.storage.onChanged.addListener(logStorageChange);
       return () => {
         browser.storage.onChanged.removeListener(logStorageChange);
       };
