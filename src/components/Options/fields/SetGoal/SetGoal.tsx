@@ -1,6 +1,6 @@
 import { browser } from 'webextension-polyfill-ts';
 import React, { useState } from "react";
-import { useGoalAsync } from './useGoalAsync';
+import { useGoal } from '../../../../dataSvc';
 import GetUnits from '../../../GetUnits/GetUnits';
 
 function UpdateAmount() {
@@ -12,11 +12,12 @@ function UpdateAmount() {
   }
 
   async function setGoal(goal: React.SetStateAction<string>) {
-    await browser.storage.local.set({goal: goal});
+    const { options } = await browser.storage.local.get('options');
+    await browser.storage.local.set({ options: Object.assign(options, { goal }) });
     setGoalValue(goal)
   }
 
-  const goal = useGoalAsync();
+  const goal = useGoal();
   
   return (
     <div className="field">

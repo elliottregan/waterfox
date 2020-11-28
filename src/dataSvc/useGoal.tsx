@@ -5,13 +5,13 @@ export default function useGoalAsync() {
   const [goal, setGoal] = useState(0);
 
   const getAmount = async () => {
-    const value = await browser.storage.local.get('goal');
-    setGoal(Number(value.goal));
+    const { options } = await browser.storage.local.get('options');
+    setGoal(Number(options.goal));
   }
 
   const logStorageChange = (changes: any, area: string) => {
     if (area === 'local' && changes.goal) {
-      setGoal(changes.goal.newValue);
+      setGoal(changes.options.goal.newValue);
     }
   };
 

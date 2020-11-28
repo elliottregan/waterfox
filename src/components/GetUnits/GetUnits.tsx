@@ -7,9 +7,8 @@ const unitTypesMap : Map<string, string> = new Map([
 ]);
 
 export default function ShowUnits() {
-  const units = useUnits();
   return (
-    <span>{unitTypesMap.get(units)}</span>
+    <span>{unitTypesMap.get(useUnits())}</span>
   )
 }
 

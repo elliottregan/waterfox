@@ -11,7 +11,8 @@ function UpdateAmount() {
   }
 
   async function setUnits(units: React.SetStateAction<string>) {
-    await browser.storage.local.set({ units });
+    const { options } = await browser.storage.local.get('options');
+    await browser.storage.local.set({ options: Object.assign(options, { units }) });
     setUnitsValue(units)
   }
 

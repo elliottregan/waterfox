@@ -10,15 +10,19 @@ ReactDOM.render(<Background />, document.getElementById('background'));
 interface baseStateType {
   dateCreated: Date,
   amount: number,
-  goal: number,
-  units: 'metric' | 'imperial'
+  options: {
+    goal: number,
+    units: 'metric' | 'imperial'
+  },
 }
 
 const baseState:baseStateType = {
   dateCreated: new Date(),
   amount: 0,
-  goal: 64,
-  units: 'metric'
+  options: {
+    goal: 8,
+    units: 'metric',
+  },
 };
 
 getInitialState()
