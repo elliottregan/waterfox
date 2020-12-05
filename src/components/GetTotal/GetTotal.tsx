@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useAmount, useGoal } from '../../dataSvc';
 import AnimateNumber from '../AnimateNumber/AnimateNumber';
 import GetUnits from '../GetUnits/GetUnits';
@@ -7,20 +7,8 @@ interface defaultProps {
   unit?: string;
 }
 
-const useIsMounted = () => {
-  const isMounted = useRef<Boolean>(false);
-  useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-    }
-  }, []);
-  return isMounted;
-};
-
 export default function ShowAmount(props:defaultProps) {
-  const componentIsMounted = useIsMounted();
-  const total = useAmount(componentIsMounted);
+  const total = useAmount();
   const goal = useGoal();
   let value = total;
 

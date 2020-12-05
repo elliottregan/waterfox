@@ -1,13 +1,13 @@
 import { browser } from 'webextension-polyfill-ts';
-import React, { useState } from "react";
+import React from "react";
 import { PlusCircle } from 'react-feather';
 
 import './UpdateTotal.scss'
 
 function UpdateAmount() {
-  const [amount] = useState(0);
     
   async function increaseAmount(increase:number = 1) {
+    const { amount } = await browser.storage.local.get('amount');
     const newAmount = amount + increase
     await browser.storage.local.set({amount: newAmount});
   }
@@ -23,7 +23,7 @@ function UpdateAmount() {
       <button
         type="button"
         className="btn btn--primary"
-        onClick={() => increaseAmount()}
+        onClick={() => increaseAmount(8)}
       >
         <PlusCircle /> <span>Drink a glass</span>
       </button>
@@ -31,7 +31,7 @@ function UpdateAmount() {
       <button
         type="button"
         className="btn btn-link"
-        onClick={() => decreaseAmount()}
+        onClick={() => decreaseAmount(8)}
       >
         <span>Undo</span>
       </button>

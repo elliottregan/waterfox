@@ -10,6 +10,8 @@ ReactDOM.render(<Background />, document.getElementById('background'));
 interface baseStateType {
   dateCreated: Date,
   amount: number,
+  goal: number,
+  units: 'metric' | 'imperial'
   options: {
     goal: number,
     units: 'metric' | 'imperial'
@@ -19,9 +21,11 @@ interface baseStateType {
 const baseState:baseStateType = {
   dateCreated: new Date(),
   amount: 0,
+  goal: 64,
+  units: 'imperial',
   options: {
-    goal: 8,
-    units: 'metric',
+    goal: 64,
+    units: 'imperial',
   },
 };
 
@@ -30,7 +34,6 @@ getInitialState()
 async function getInitialState() {
   const storageState = await browser.storage.local.get();
   if (!expectedSchema(storageState) || !storageState.dateCreated || isYesterday(new Date(storageState.dateCreated))) {
-    console.log('reset', !expectedSchema(storageState))
     await browser.storage.local.set({...baseState});
     console.log(await browser.storage.local.get())
   }
@@ -38,7 +41,6 @@ async function getInitialState() {
 
 // Really basic schema check. 
 function expectedSchema(state:any, schema:baseStateType = baseState) {
-  console.log(state, schema, Object.keys(state).length, Object.keys(schema).length)
   return Object.keys(state).length === Object.keys(schema).length
 }
 
